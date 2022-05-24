@@ -1,0 +1,3 @@
+[submodule "yubihsm-ed-sign"]
+	path = yubihsm-ed-sign
+	url = git@github.com:ArdanaLabs/yubihsm-ed-sign.git

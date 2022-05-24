@@ -85,3 +85,4 @@ library:
   - plutus-ledger-constraints
   - plutus-minting-policy-nft
   - plutus-tx
+  - yubihsm-ed-sign
