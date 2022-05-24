@@ -9,14 +9,24 @@
       url = "github:input-output-hk/haskell.nix";
     };
     plutus.url = "github:input-output-hk/plutus";
+
+    # yubihsm-ed-sign.url = "git";
+    yubihsm-ed-sign.url = "git+ssh://git@github.com/ArdanaLabs/yubihsm-ed-sign.git?ref=main";
   };
-  outputs = { self, nixpkgs, plutus, flake-utils, lint-utils, haskellNix }:
+  outputs = { self, nixpkgs, plutus, flake-utils, lint-utils, haskellNix, yubihsm-ed-sign }:
     flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
       let
         deferPluginErrors = true;
         overlays = [
           haskellNix.overlay
           (final: prev: {
+            haskellPackages = prev.haskellPackages.override {
+              overrides = hself: hsuper:  {
+                yubihsm-ed-sign = yubihsm-ed-sign.packages.default.${system};
+                # app = super.callPackage ./default.nix;
+              };
+            };
+
             plutus-contract-gift =
 
               final.haskell-nix.project' {
