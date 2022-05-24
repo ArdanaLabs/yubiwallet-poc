@@ -1,0 +1,142 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.7.
+--
+-- see: https://github.com/sol/hpack
+
+name:           plutus-contract-nft
+version:        0.1.0.0
+synopsis:       NFT Contract For Plutus
+description:    NFT Contract For Plutus
+category:       Plutus
+author:         Daniel Firth
+maintainer:     dan.firth@homotopic.tech
+copyright:      Daniel Firth
+license:        MIT
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+library
+  exposed-modules:
+      Plutus.Contracts.NFT
+  other-modules:
+      Paths_plutus_contract_nft
+  hs-source-dirs:
+      src
+  default-extensions:
+      AllowAmbiguousTypes
+      BangPatterns
+      BinaryLiterals
+      ConstraintKinds
+      DataKinds
+      DefaultSignatures
+      DeriveFoldable
+      DeriveFunctor
+      DeriveGeneric
+      DeriveTraversable
+      DerivingStrategies
+      DoAndIfThenElse
+      EmptyDataDecls
+      ExistentialQuantification
+      FlexibleContexts
+      FlexibleInstances
+      FunctionalDependencies
+      GADTs
+      GeneralizedNewtypeDeriving
+      InstanceSigs
+      KindSignatures
+      LambdaCase
+      MultiParamTypeClasses
+      NoImplicitPrelude
+      NumericUnderscores
+      OverloadedStrings
+      PatternGuards
+      PolyKinds
+      RankNTypes
+      RecordWildCards
+      ScopedTypeVariables
+      StandaloneDeriving
+      TupleSections
+      TypeApplications
+      TypeFamilies
+      TypeOperators
+      TypeSynonymInstances
+      ViewPatterns
+  ghc-options: -Weverything -Werror -Wno-all-missed-specialisations -Wno-missing-import-lists -Wno-missing-local-signatures -Wno-missing-safe-haskell-mode -Wno-prepositive-qualified-module -Wno-safe -Wno-unsafe -Wno-unused-packages -fobject-code -fno-ignore-interface-pragmas -fno-omit-interface-pragmas -fno-specialise -fno-strictness
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , plutus-contract
+    , plutus-ledger
+    , plutus-ledger-api
+    , plutus-ledger-constraints
+    , plutus-minting-policy-nft
+    , plutus-tx
+    , text
+  default-language: Haskell2010
+
+test-suite plutus-contract-nft-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Plutus.ContractModel.NFT
+      Paths_plutus_contract_nft
+  hs-source-dirs:
+      test
+  default-extensions:
+      AllowAmbiguousTypes
+      BangPatterns
+      BinaryLiterals
+      ConstraintKinds
+      DataKinds
+      DefaultSignatures
+      DeriveFoldable
+      DeriveFunctor
+      DeriveGeneric
+      DeriveTraversable
+      DerivingStrategies
+      DoAndIfThenElse
+      EmptyDataDecls
+      ExistentialQuantification
+      FlexibleContexts
+      FlexibleInstances
+      FunctionalDependencies
+      GADTs
+      GeneralizedNewtypeDeriving
+      InstanceSigs
+      KindSignatures
+      LambdaCase
+      MultiParamTypeClasses
+      NoImplicitPrelude
+      NumericUnderscores
+      OverloadedStrings
+      PatternGuards
+      PolyKinds
+      RankNTypes
+      RecordWildCards
+      ScopedTypeVariables
+      StandaloneDeriving
+      TupleSections
+      TypeApplications
+      TypeFamilies
+      TypeOperators
+      TypeSynonymInstances
+      ViewPatterns
+  ghc-options: -Weverything -Werror -Wno-all-missed-specialisations -Wno-missing-import-lists -Wno-missing-local-signatures -Wno-missing-safe-haskell-mode -Wno-prepositive-qualified-module -Wno-safe -Wno-unsafe -Wno-unused-packages -fobject-code -fno-ignore-interface-pragmas -fno-omit-interface-pragmas -fno-specialise -fno-strictness -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      QuickCheck
+    , base >=4.7 && <5
+    , containers
+    , hedgehog-quickcheck
+    , lens
+    , plutus-contract
+    , plutus-contract-nft
+    , plutus-ledger
+    , plutus-ledger-api
+    , tasty
+    , tasty-quickcheck
+    , text
+    , yubihsm-ed-sign
+  default-language: Haskell2010
