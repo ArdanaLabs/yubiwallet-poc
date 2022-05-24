@@ -12,17 +12,20 @@
     yubihsm-ed-sign.url = "git+ssh://git@github.com/ArdanaLabs/yubihsm-ed-sign.git?ref=main";
   };
   outputs = { self, nixpkgs, plutus, flake-utils, lint-utils, haskellNix, yubihsm-ed-sign }:
+    with builtins;
     flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
       let
         deferPluginErrors = true;
         overlays = [
           haskellNix.overlay
           (final: prev: {
-            haskellPackages = prev.haskellPackages.override {
-              overrides = hself: hsuper:  {
-                yubihsm-ed-sign = yubihsm-ed-sign.packages.default.${system};
-              };
-            };
+            yubihsmedsign = yubihsm-ed-sign.packages.${system}.rust;
+            haskellPackages = abort " I get used";
+            # final.haskellPackages.override {
+            #   overrides = hself: hsuper:  {
+            #     yubihsm-ed-sign = throw "yubihsm-ed-sign.packages.${system}.default;";
+            #   };
+            # };
 
             plutus-contract-gift =
 
@@ -32,6 +35,7 @@
                 projectFileName = "stack.yaml";
                 modules = [{
                   packages = {
+                    yubihsm-ed-sign.components.library.libs = pkgs.lib.mkForce [ pkgs.yubihsmedsign ];
                     marlowe.flags.defer-plugin-errors = deferPluginErrors;
                     plutus-use-cases.flags.defer-plugin-errors = deferPluginErrors;
                     plutus-ledger.flags.defer-plugin-errors = deferPluginErrors;

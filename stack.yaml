@@ -1,7 +1,6 @@
 resolver: lts-18.28
 packages:
 - .
-- ./yubihsm-ed-sign
 
 
 extra-deps:
@@ -62,7 +61,9 @@ extra-deps:
 - time-interval-0.1.1
 - time-out-0.2
 - transformers-except-0.1.2
- 
+
+- git: ssh://git@github.com/ArdanaLabs/yubihsm-ed-sign.git
+  commit: dc66ef1aa3ffb97358003d8136309b81f2772bfc
 - git: https://github.com/Quid2/flat.git
   commit: d32c2c0c0c3c38c41177684ade9febe92d279b06
 - git: https://github.com/input-output-hk/purescript-bridge.git

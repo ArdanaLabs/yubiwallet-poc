@@ -75,6 +75,7 @@ library
     , plutus-minting-policy-nft
     , plutus-tx
     , text
+    , yubihsm-ed-sign
   default-language: Haskell2010
 
 test-suite plutus-contract-nft-test
